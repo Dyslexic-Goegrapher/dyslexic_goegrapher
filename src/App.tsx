@@ -1,23 +1,19 @@
-import './App.css'
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Navigation from "./components/Navigation";
+import Home from "./pages/home";
+import About from "./pages/about";
+import Blog from "./pages/blog";
 
-function App() {
+export default function App() {
   return (
-    <main>
-      <header>
-        <a href="https://blog.dyslexic-goegrapher.be"><p>blog.dyslexic-goegrapher.be</p></a>
-        <p>Hi, I am Dyssi.</p>
-        <h1>What is this?</h1>
-        <p>
-          This site is a place to:
-        </p>
-        <ol>
-          <li>Show what I build</li>
-          <li>Publish blog posts</li>
-          <li>Experiment with new ideas</li>
-        </ol>
-      </header>
-    </main>
-  )
+    <>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
+      </Routes>
+    </>
+  );
 }
-
-export default App
