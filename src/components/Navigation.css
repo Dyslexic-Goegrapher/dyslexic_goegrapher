@@ -53,9 +53,7 @@
     background-color: #f6f6f6;
 }
 
-.site-header__link:hover,
 .site-header__link--active {
-    text-underline-offset: 0.2em;
     font-weight: 600;
 }
 
