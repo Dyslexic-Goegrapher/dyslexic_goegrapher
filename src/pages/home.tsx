@@ -2,6 +2,7 @@ export default function Home() {
   return (
     <main>
       <header>
+        <h1>Home</h1>
         <p>Hi, I am Dyssi.</p>
         <h1>What is this?</h1>
         <p>This site is a place to:</p>
