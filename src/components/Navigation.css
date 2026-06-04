@@ -51,7 +51,6 @@
 
 .site-header__link:hover {
     background-color: #f6f6f6;
-    animation: moveAcross 5s 5 cubic-bezier(0.1, -0.6, 0.2, 0);
 }
 
 .site-header__link[aria-current="page"] {
