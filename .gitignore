@@ -27,4 +27,4 @@ dist-ssr
 *.xcf
 
 # ATProto
-./src/lexicons
+src/lexicons

@@ -1,3 +1,5 @@
+import * as publication from "../../lexicons/site/standard/publication.json";
+
 export default function Blog() {
   return (
     <main>
