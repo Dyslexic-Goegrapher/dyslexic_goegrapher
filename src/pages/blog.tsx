@@ -1,4 +1,4 @@
-import * as publication from "../../lexicons/site/standard/publication.json";
+import PostList from "../components/blog/PostList";
 
 export default function Blog() {
   return (
@@ -13,11 +13,7 @@ export default function Blog() {
           .
         </p>
       </header>
-      <iframe
-        title="Dyslexic Goegrapher blog"
-        src="https://blog.dyslexic-goegrapher.be"
-        style={{ border: 0, height: "80vh", width: "100%" }}
-      />
+      <PostList repo="did:plc:rju7gfa2xhjzlscfg457retz" />
     </main>
   );
 }
