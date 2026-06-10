@@ -25,6 +25,3 @@ dist-ssr
 
 # GIMP
 *.xcf
-
-# ATProto
-src/lexicons
