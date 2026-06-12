@@ -23,7 +23,7 @@ export default function Navigation() {
       <div className="flex flex-row items-center gap-8 min-h-16 p-1.5 w-full">
         <Link
           to="/"
-          className="p-2.5 items-center inline-flex gap-3 text-inherit font-bold whitespace-nowrap flex-1"
+          className="flex p-2.5 items-center gap-3 text-inherit font-bold whitespace-nowrap flex-1"
           aria-label="Dyslexic Goegrapher home"
         >
           <img
