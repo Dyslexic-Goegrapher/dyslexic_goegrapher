@@ -58,7 +58,7 @@ export default function PostList({ repo }: { repo: string }) {
   }
 
   return (
-    <div className="flex gap-3">
+    <div className="flex flex-col gap-3">
       {documents.map((document) => (
         <BlogCard
           key={document.uri}
