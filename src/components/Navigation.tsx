@@ -20,7 +20,7 @@ const socialLinks = [
 export default function Navigation() {
   return (
     <header className="border-b-gray-600">
-      <div className="flex flex-col sm:flex-row items-center content gap-8 min-h-16 p-1.5">
+      <div className="flex flex-col sm:flex-row items-center gap-8 min-h-16 p-1.5 w-full">
         <Link
           to="/"
           className="p-2.5 items-center inline-flex gap-3 text-inherit font-bold whitespace-nowrap"
@@ -33,7 +33,8 @@ export default function Navigation() {
           />
           <span>Dyslexic Goegrapher</span>
         </Link>
-        <div className="flex items-center gap-6">
+
+        <div className="flex items-center gap-6 flex-1 w-full">
           <nav className="flex items-center gap-6" aria-label="Primary">
             {navigationLinks.map((link) => (
               <NavLink
@@ -49,8 +50,9 @@ export default function Navigation() {
               </NavLink>
             ))}
           </nav>
+
           <div
-            className="flex flex-col sm:flex-row  items-center gap-2"
+            className="flex flex-col sm:flex-row items-center gap-2 ml-auto"
             aria-label="Social links"
           >
             {socialLinks.map((link) => (
