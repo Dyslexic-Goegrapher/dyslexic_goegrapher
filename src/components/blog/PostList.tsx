@@ -14,6 +14,7 @@ async function listDocuments(repo: string): Promise<DocumentRecord[]> {
   url.searchParams.set("repo", repo);
   url.searchParams.set("collection", "site.standard.document");
   url.searchParams.set("limit", "99");
+  url.searchParams.set("reverse", "false");
 
   const res = await fetch(url);
 
@@ -57,7 +58,7 @@ export default function PostList({ repo }: { repo: string }) {
   }
 
   return (
-    <div>
+    <div className="flex gap-3">
       {documents.map((document) => (
         <BlogCard
           key={document.uri}

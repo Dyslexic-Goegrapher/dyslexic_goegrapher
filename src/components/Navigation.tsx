@@ -19,11 +19,11 @@ const socialLinks = [
 
 export default function Navigation() {
   return (
-    <header className="border-b-gray-600 dark:border-b-gray-400">
-      <div className="flex items-center content justify-between gap-6 min-h-16 p-1.5">
+    <header className="border-b-gray-600">
+      <div className="flex flex-col sm:flex-row items-center content gap-8 min-h-16 p-1.5">
         <Link
           to="/"
-          className="items-center inline-flex gap-3 text-inherit font-bold nowrap"
+          className="p-2.5 items-center inline-flex gap-3 text-inherit font-bold whitespace-nowrap"
           aria-label="Dyslexic Goegrapher home"
         >
           <img
@@ -33,39 +33,43 @@ export default function Navigation() {
           />
           <span>Dyslexic Goegrapher</span>
         </Link>
-
-        <div className="flex items-center gap-6" aria-label="Primary">
-          {navigationLinks.map((link) => (
-            <NavLink
-              to={link.to}
-              className={({ isActive }) =>
-                classNames(
-                  "rounded-3xl p-2.5 text-inherit hover:bg-gray-200 dark:hover:text-gray-800",
-                  isActive ? "font-semibold" : "",
-                )
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
-        </div>
-        <div className="site-header__socials" aria-label="Social links">
-          {socialLinks.map((link) => (
-            <a
-              href={link.href}
-              className="inline-flex items-center justify-center w-9 h-9 rounded-2xl hover:bg-gray-200 dark:hover:text-gray-500"
-              aria-label={link.label}
-              title={link.label}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                className="w-6 h-6"
-                src={`/logos/${link.label.toLowerCase().replace(/\s/g, "")}.svg`}
-                alt={`${link.label} logo`}
-              />
-            </a>
-          ))}
+        <div className="flex items-center gap-6">
+          <nav className="flex items-center gap-6" aria-label="Primary">
+            {navigationLinks.map((link) => (
+              <NavLink
+                to={link.to}
+                className={({ isActive }) =>
+                  classNames(
+                    "rounded-3xl p-2.5 text-inherit hover:bg-gray-200 dark:hover:text-gray-500",
+                    isActive ? "font-semibold" : "",
+                  )
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
+          <div
+            className="flex flex-col sm:flex-row  items-center gap-2"
+            aria-label="Social links"
+          >
+            {socialLinks.map((link) => (
+              <a
+                href={link.href}
+                className="inline-flex items-center justify-center w-9 h-9 rounded-2xl text-inherit hover:bg-gray-200"
+                aria-label={link.label}
+                title={link.label}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  className="w-5 h-5"
+                  src={`/logos/${link.label.toLowerCase().replace(/\s/g, "")}.svg`}
+                  alt={`${link.label} logo`}
+                />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </header>

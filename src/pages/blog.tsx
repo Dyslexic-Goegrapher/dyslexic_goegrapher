@@ -3,7 +3,7 @@ import PostList from "../components/blog/PostList";
 export default function Blog() {
   return (
     <main>
-      <header>
+      <header className="mb-8">
         <h1>Blog</h1>
         <p>
           If the blog does not load below, you can open it directly at{" "}
