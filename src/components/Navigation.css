@@ -1,6 +1,6 @@
-.site-header {
+/*.site-header {
   border-bottom: 1px solid #d9d9d9;
-  /*background: #fff;*/
+  background: #fff;
 }
 
 .site-header__main {
@@ -115,4 +115,4 @@
   .site-header__main {
     align-items: flex-start;
   }
-}
+}*/

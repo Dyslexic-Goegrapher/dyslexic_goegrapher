@@ -7,13 +7,13 @@ import Blog from "./pages/blog";
 
 export default function App() {
   return (
-    <>
+    <div className="max-w-6xl ml-0 mr-0 mt-auto mb-auto p-8 text-center">
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
       </Routes>
-    </>
+    </div>
   );
 }
