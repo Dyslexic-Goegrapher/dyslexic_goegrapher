@@ -6,9 +6,9 @@ function classNames(...classes: string[]): string {
 }
 
 const navigationLinks = [
-  { to: "/", label: "Mohe", current: true },
-  { to: "/blog", label: "Glob", current: false },
-  { to: "/about", label: "Batou", current: false },
+  { to: "/", label: "Home", label_dyssi: "Mohe", current: true },
+  { to: "/blog", label: "Blog", label_dyssi: "Glob", current: false },
+  { to: "/about", label: "About", label_dyssi: "Batou", current: false },
 ];
 
 const socialLinks = [
@@ -58,12 +58,38 @@ export default function Navigation() {
             to={link.to}
             className={({ isActive }) =>
               classNames(
-                "rounded-3xl p-2.5 text-inherit hover:bg-gray-200 dark:hover:text-gray-500",
+                "group inline-grid rounded-3xl p-2.5 text-inherit hover:bg-gray-200 dark:hover:text-gray-500",
                 isActive ? "font-semibold" : "",
               )
             }
           >
-            {link.label}
+            {({ isActive }) =>
+              isActive ? (
+                <span className="col-start-1 row-start-1 opacity-100">
+                  {link.label}
+                </span>
+              ) : (
+                <>
+                  <span className="col-start-1 row-start-1 opacity-100">
+                    {link.label_dyssi.split("").map((char, index) => (
+                      <span
+                        key={`${link.to}-${index}`}
+                        className={
+                          index % 2 === 0
+                            ? "inline-block group-hover:animate-dyslexic-0"
+                            : "inline-block group-hover:animate-dyslexic-1"
+                        }
+                      >
+                        {char}
+                      </span>
+                    ))}
+                  </span>
+                  <span className="col-start-1 row-start-1 opacity-0 transition-opacity duration-0 delay-1600 group-hover:opacity-100">
+                    {link.label}
+                  </span>
+                </>
+              )
+            }
           </NavLink>
         ))}
       </nav>
