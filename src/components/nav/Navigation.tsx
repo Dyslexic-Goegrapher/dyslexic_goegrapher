@@ -1,7 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navigation.css";
 
-// test
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
 }
