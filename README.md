@@ -1,4 +1,4 @@
-# Dyslexic Goegrapher
+# Dyslexic Goegrapher ![Dyslexic Goegrapher](./public/dyssi.svg)
 
 This is the repo of my website. You can check it out the website at [dyslexic-goegrapher.com](https://dyslexic-goegrapher.com).
 This is just my personal space on the web. I use this website mostly as a location to learn and play around with web technologies.
@@ -12,5 +12,3 @@ This is just my personal space on the web. I use this website mostly as a locati
 # [Atproto lexicons](https://atproto.com/specs/lexicon)
 
 - [site.standard](https://standard.site)
-
-  ![Dyslexic Goegrapher](./public/dyssi.svg)
