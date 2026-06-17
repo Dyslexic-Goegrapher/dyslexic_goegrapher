@@ -84,7 +84,7 @@ export default function Navigation() {
                       </span>
                     ))}
                   </span>
-                  <span className="col-start-1 row-start-1 opacity-0 transition-opacity duration-0 delay-1600 group-hover:opacity-100">
+                  <span className="col-start-1 row-start-1 opacity-0 transition-opacity duration-0 group-hover:opacity-100">
                     {link.label}
                   </span>
                 </>

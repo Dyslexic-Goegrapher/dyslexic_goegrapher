@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --animate-dyslexic-0: dyslexic-left 1600ms ease-in-out forwards;
-  --animate-dyslexic-1: dyslexic-right 1600ms ease-in-out forwards;
+  --animate-dyslexic-0: dyslexic-left 500ms ease-in-out forwards;
+  --animate-dyslexic-1: dyslexic-right 500ms ease-in-out forwards;
 
   @keyframes dyslexic-left {
     0%,
