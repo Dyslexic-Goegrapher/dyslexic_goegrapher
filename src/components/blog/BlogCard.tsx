@@ -1,3 +1,6 @@
+/**
+ * Component that renders a blog card based on provided props.
+ */
 export default function BlogCard({
   title,
   summary,
