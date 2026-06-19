@@ -1,53 +1,11 @@
 import { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
-import { standard } from "../../lexicons/site";
+import { listDocuments } from "./blogApi";
+
+type BlogPost = Awaited<ReturnType<typeof listDocuments>>[number];
 
 /**
- * Type definition for a blogpost written on my atproto PDS.
- */
-type BlogPost = {
-  uri: string;
-  value: standard.document.Main;
-};
-
-/**
- * List of all the blog posts within my publication "Dyslexic Goegrapher".
- *
- * The function fetches all documents from my atproto PDS and filters the blog posts on my
- * publication 'Dyslexic Goegrapher'.
- * @returns A promise that resolves to an array of `BlogPost` objects.
- */
-async function listDocuments(): Promise<BlogPost[]> {
-  const pdsHost = "https://eurosky.social";
-
-  const url = new URL(`${pdsHost}/xrpc/com.atproto.repo.listRecords`);
-  url.searchParams.set("repo", "did:plc:rju7gfa2xhjzlscfg457retz");
-  url.searchParams.set("collection", "site.standard.document");
-  url.searchParams.set("limit", "99");
-  url.searchParams.set("reverse", "false");
-
-  const res = await fetch(url);
-
-  if (!res.ok) {
-    throw new Error(
-      `Failed to list documents: ${res.status} ${res.statusText}`,
-    );
-  }
-  const blogPosts: BlogPost[] = [];
-  const data: { records: BlogPost[] } = await res.json();
-  for (const post of data.records) {
-    if (
-      post.value.site ===
-      "at://did:plc:rju7gfa2xhjzlscfg457retz/site.standard.publication/3mmyafx7poc2m"
-    ) {
-      blogPosts.push(post);
-    }
-  }
-  return blogPosts;
-}
-
-/**
- * Fetch the blogposts from the PDS an generate a component based on the data.
+ * Fetch the blogposts from the PDS and generate a component based on the data.
  */
 export default function PostList() {
   const [documents, setDocuments] = useState<BlogPost[]>([]);
@@ -79,7 +37,7 @@ export default function PostList() {
           key={document.uri}
           title={document.value.title}
           summary={document.value.description}
-          url={`https://blog.dyslexic-goegrapher.be/${document.value.path}`}
+          to={`/blog/${document.uri.split("/").pop()}`}
         />
       ))}
     </div>

@@ -4,6 +4,7 @@ import Navigation from "./components/nav/Navigation";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Blog from "./pages/blog";
+import BlogPostPage from "./pages/blogPost";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:rkey" element={<BlogPostPage />} />
       </Routes>
     </div>
   );
