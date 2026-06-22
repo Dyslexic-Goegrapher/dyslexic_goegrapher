@@ -1,9 +1,4 @@
 <<<<<<< HEAD
-<<<<<<< HEAD
-import { Link } from "react-router-dom";
-
-=======
->>>>>>> parent of 4127e92 (Adding documentation)
 =======
 >>>>>>> parent of 4127e92 (Adding documentation)
 export default function BlogCard({
