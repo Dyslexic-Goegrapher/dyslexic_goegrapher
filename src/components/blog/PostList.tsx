@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import { listDocuments } from "./blogApi";
 
+<<<<<<< HEAD
 type BlogPost = Awaited<ReturnType<typeof listDocuments>>[number];
 
 <<<<<<< HEAD
@@ -11,6 +12,8 @@ type BlogPost = Awaited<ReturnType<typeof listDocuments>>[number];
 export default function PostList() {
   const [documents, setDocuments] = useState<BlogPost[]>([]);
 =======
+=======
+>>>>>>> parent of 4127e92 (Adding documentation)
 type DocumentRecord = {
   uri: string;
   value: standard.document.Main;
@@ -45,6 +48,9 @@ async function listDocuments(repo: string): Promise<DocumentRecord[]> {
 
 export default function PostList({ repo }: { repo: string }) {
   const [documents, setDocuments] = useState<DocumentRecord[]>([]);
+<<<<<<< HEAD
+>>>>>>> parent of 4127e92 (Adding documentation)
+=======
 >>>>>>> parent of 4127e92 (Adding documentation)
   const [error, setError] = useState<string | null>(null);
 

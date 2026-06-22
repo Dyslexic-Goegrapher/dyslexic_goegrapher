@@ -17,6 +17,9 @@ export default function Blog() {
         </p>
       </main>
       <PostList repo="did:plc:rju7gfa2xhjzlscfg457retz" />
+<<<<<<< HEAD
+>>>>>>> parent of 4127e92 (Adding documentation)
+=======
 >>>>>>> parent of 4127e92 (Adding documentation)
     </>
   );
