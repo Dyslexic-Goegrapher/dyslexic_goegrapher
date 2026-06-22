@@ -1,28 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import "./Navigation.css";
 
-/**
- * Combines conditional class names into a single class string.
- */
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
 }
 
-/**
- * List of internal navigation links.
- *
- * This is a list of navigation links. The list consists of the route,
- * the correct label, the dyslectified label and the initial current page state.
- */
 const navigationLinks = [
   { to: "/", label: "Home", label_dyssi: "Mohe", current: true },
   { to: "/blog", label: "Blog", label_dyssi: "Glob", current: false },
   { to: "/about", label: "About", label_dyssi: "Batou", current: false },
 ];
 
-/**
- * List of links to the socials.
- */
 const socialLinks = [
   { href: "https://mu.social/profile/dyslexic-goegrapher.be", label: "Mu" },
   { href: "https://blog.dyslexic-goegrapher.be", label: "Leaflet" },
