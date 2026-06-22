@@ -1,18 +1,27 @@
 import { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
-import { listDocuments } from "./blogApi";
+import { standard } from "../../lexicons/site";
 
-<<<<<<< HEAD
-type DocumentRecord = {
+/**
+ * Type definition for a blogpost written on my atproto PDS.
+ */
+type BlogPost = {
   uri: string;
   value: standard.document.Main;
 };
 
-async function listDocuments(repo: string): Promise<DocumentRecord[]> {
+/**
+ * List of all the blog posts within my publication "Dyslexic Goegrapher".
+ *
+ * The function fetches all documents from my atproto PDS and filters the blog posts on my
+ * publication 'Dyslexic Goegrapher'.
+ * @returns A promise that resolves to an array of `BlogPost` objects.
+ */
+async function listDocuments(): Promise<BlogPost[]> {
   const pdsHost = "https://eurosky.social";
 
   const url = new URL(`${pdsHost}/xrpc/com.atproto.repo.listRecords`);
-  url.searchParams.set("repo", repo);
+  url.searchParams.set("repo", "did:plc:rju7gfa2xhjzlscfg457retz");
   url.searchParams.set("collection", "site.standard.document");
   url.searchParams.set("limit", "99");
   url.searchParams.set("reverse", "false");
@@ -24,25 +33,30 @@ async function listDocuments(repo: string): Promise<DocumentRecord[]> {
       `Failed to list documents: ${res.status} ${res.statusText}`,
     );
   }
-  const blogPosts: DocumentRecord[] = [];
-  const data: { records: DocumentRecord[] } = await res.json();
+  const blogPosts: BlogPost[] = [];
+  const data: { records: BlogPost[] } = await res.json();
   for (const post of data.records) {
-    console.log(post.value.site);
-    if (post.value.site.includes("publication")) {
+    if (
+      post.value.site ===
+      "at://did:plc:rju7gfa2xhjzlscfg457retz/site.standard.publication/3mmyafx7poc2m"
+    ) {
       blogPosts.push(post);
     }
   }
   return blogPosts;
 }
 
-export default function PostList({ repo }: { repo: string }) {
-  const [documents, setDocuments] = useState<DocumentRecord[]>([]);
+/**
+ * Fetch the blogposts from the PDS an generate a component based on the data.
+ */
+export default function PostList() {
+  const [documents, setDocuments] = useState<BlogPost[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    async function loadDocuments() {
+    async function loadBlogposts() {
       try {
-        const records = await listDocuments(repo);
+        const records = await listDocuments();
         setDocuments(records);
       } catch (error) {
         setError(
@@ -51,8 +65,8 @@ export default function PostList({ repo }: { repo: string }) {
       }
     }
 
-    void loadDocuments();
-  }, [repo]);
+    void loadBlogposts();
+  }, []);
 
   if (error) {
     return <p>{error}</p>;
@@ -65,7 +79,7 @@ export default function PostList({ repo }: { repo: string }) {
           key={document.uri}
           title={document.value.title}
           summary={document.value.description}
-          to={`/blog/${document.uri.split("/").pop()}`}
+          url={`https://blog.dyslexic-goegrapher.be/${document.value.path}`}
         />
       ))}
     </div>

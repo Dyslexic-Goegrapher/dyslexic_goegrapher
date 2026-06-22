@@ -1,5 +1,3 @@
-Don't try to run npm build
-
 This is a project used for my personal website.
 
 The website has three tasks. One is to showcase my capabilities as a developer. I also want to use it as a blogging site and is a way of experimenting with new things. The site can start small (e.g. an unstyled summation of list elements) and grow as my capabilities as a developer grow.
