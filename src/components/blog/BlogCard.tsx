@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-=======
->>>>>>> parent of 4127e92 (Adding documentation)
 export default function BlogCard({
   title,
   summary,
