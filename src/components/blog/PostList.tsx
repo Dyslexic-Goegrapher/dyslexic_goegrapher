@@ -17,7 +17,7 @@ type BlogPost = {
  * publication 'Dyslexic Goegrapher'.
  * @returns A promise that resolves to an array of `BlogPost` objects.
  */
-async function listDocuments(): Promise<BlogPost[]> {
+async function listDocuments(publication: string): Promise<BlogPost[]> {
   const pdsHost = "https://eurosky.social";
 
   const url = new URL(`${pdsHost}/xrpc/com.atproto.repo.listRecords`);
@@ -36,10 +36,7 @@ async function listDocuments(): Promise<BlogPost[]> {
   const blogPosts: BlogPost[] = [];
   const data: { records: BlogPost[] } = await res.json();
   for (const post of data.records) {
-    if (
-      post.value.site ===
-      "at://did:plc:rju7gfa2xhjzlscfg457retz/site.standard.publication/3mmyafx7poc2m"
-    ) {
+    if (post.value.site === publication) {
       blogPosts.push(post);
     }
   }
@@ -49,14 +46,14 @@ async function listDocuments(): Promise<BlogPost[]> {
 /**
  * Fetch the blogposts from the PDS an generate a component based on the data.
  */
-export default function PostList() {
+export default function PostList({ publication }: { publication: string }) {
   const [documents, setDocuments] = useState<BlogPost[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadBlogposts() {
       try {
-        const records = await listDocuments();
+        const records = await listDocuments(publication);
         setDocuments(records);
       } catch (error) {
         setError(
@@ -66,7 +63,7 @@ export default function PostList() {
     }
 
     void loadBlogposts();
-  }, []);
+  }, [publication]);
 
   if (error) {
     return <p>{error}</p>;
