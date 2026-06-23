@@ -31,25 +31,25 @@ const socialLinks = [
 
 export default function Navigation() {
   return (
-    <header className="border-b-gray-600 border-b m-8 dark:border-gray-100">
-      <div className="flex flex-row items-center gap-8 min-h-16 p-1.5 w-full">
+    <header className="border-b border-b-gray-600 dark:border-gray-100">
+      <div className="flex flex-row p-2.5">
         <Link
           to="/"
-          className="flex p-2.5 items-center gap-3 text-inherit font-bold whitespace-nowrap flex-1"
+          className="flex flex-1 items-center gap-3 p-2.5 text-center font-bold"
           aria-label="Dyslexic Goegrapher home"
         >
           <img
             src="/logos/dyssi.svg"
             alt="dyslexic goegrapher logo"
-            className="h-8 w-8 rounded-full object-cover"
+            className="h-8"
           />
           <span>Dyslexic Goegrapher</span>
         </Link>
-        <div className="flex flex-col sm:flex-row gap-4 ">
+        <div className="flex flex-col items-center sm:flex-row">
           {socialLinks.map((link) => (
             <a
               href={link.href}
-              className="inline-flex items-center justify-center w-9 h-9 rounded-2xl text-inherit hover:bg-gray-200"
+              className="inline-flex items-center justify-center w-9 h-9 rounded-2xl hover:bg-gray-200"
               aria-label={link.label}
               title={link.label}
               target="_blank"
