@@ -41,6 +41,7 @@ export default function Navigation({
         <div className="flex flex-col items-center sm:flex-row">
           {socialLinks.map((link) => (
             <a
+              key={link.href}
               href={link.href}
               className="inline-flex items-center justify-center w-9 h-9 rounded-2xl hover:bg-gray-200"
               aria-label={link.label}
@@ -60,6 +61,7 @@ export default function Navigation({
       <nav className="flex justify-center gap-6 w-full" aria-label="Primary">
         {navigationLinks.map((link) => (
           <NavLink
+            key={link.to}
             to={link.to}
             className={({ isActive }) =>
               classNames(

@@ -4,7 +4,7 @@ import Navigation from "./components/nav/Navigation";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Blog from "./pages/blog";
-import Projects from "./pages/projects";
+import Maps from "./pages/maps";
 import { type NavigationLink } from "./types/navigation";
 
 /**
@@ -18,29 +18,25 @@ const navigationLinks: NavigationLink[] = [
     to: "/",
     label: "Home",
     label_dyssi: "Mohe",
-    current: true,
-    element: <Home />,
+    component: Home,
   },
   {
     to: "/blog",
     label: "Blog",
     label_dyssi: "Glob",
-    current: false,
-    element: <Blog />,
+    component: Blog,
   },
   {
     to: "/about",
     label: "About",
     label_dyssi: "Batou",
-    current: false,
-    element: <About />,
+    component: About,
   },
   {
     to: "/projects",
-    label: "Projects",
-    label_dyssi: "Protejcs",
-    current: false,
-    element: <Projects />,
+    label: "Maps",
+    label_dyssi: "Psam",
+    component: Maps,
   },
 ];
 
@@ -51,7 +47,7 @@ export default function App() {
       <div className="flex flex-col items-center ml-0 mr-0 mt-auto mb-auto p-8 text-center">
         <Routes>
           {navigationLinks.map((link) => (
-            <Route key={link.to} path={link.to} element={link.element} />
+            <Route key={link.to} path={link.to} element={<link.component />} />
           ))}
         </Routes>
       </div>
