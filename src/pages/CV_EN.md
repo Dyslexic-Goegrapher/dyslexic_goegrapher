@@ -1,4 +1,4 @@
-# Arno Moerdijk
+# Dyslexic Goegrapher
 
 | Email            | [torbotijger@proton.me](mailto:torbotijger@proton.me)                                  |
 | ---------------- | -------------------------------------------------------------------------------------- |

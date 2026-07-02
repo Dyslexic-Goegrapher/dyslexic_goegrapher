@@ -4,7 +4,7 @@ import Navigation from "./components/nav/Navigation";
 import Home from "./pages/home";
 import About from "./pages/about";
 import Blog from "./pages/blog";
-import Maps from "./pages/maps";
+import Projects from "./pages/projects";
 import { type NavigationLink } from "./types/navigation";
 
 /**
@@ -34,9 +34,9 @@ const navigationLinks: NavigationLink[] = [
   },
   {
     to: "/projects",
-    label: "Maps",
-    label_dyssi: "Psam",
-    component: Maps,
+    label: "Projects",
+    label_dyssi: "Roptecsj",
+    component: Projects,
   },
 ];
 
