@@ -3,17 +3,21 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import cvMarkdown from "./CV_EN.md?raw";
 
+type TerminalOutput = {
+  href?: string;
+  text: string;
+};
+
 type TerminalLine =
   | {
       id: number;
       kind: "command";
       command: string;
     }
-  | {
+  | ({
       id: number;
       kind: "output";
-      text: string;
-    };
+    } & TerminalOutput);
 
 const terminalUser = "dyssi@dyslexic_goegrapher.be";
 const terminalRoot = "~/";
@@ -24,11 +28,16 @@ const nextCommandDelay = 350;
 const terminalSteps = [
   {
     command: "whoami",
-    output: ["dyssi"],
+    output: [
+      {
+        href: "https://sifa.id/p/dyslexic-goegrapher.be",
+        text: "dyssi",
+      },
+    ],
   },
   {
-    command: "ls skils/",
-    output: ["gis.md web_dev.md"],
+    command: "ls skills/",
+    output: [{ text: "gis.md web_dev.md" }],
   },
   {
     command: "code resume.md",
@@ -101,10 +110,10 @@ export default function About() {
         if (step.output.length > 0) {
           setTerminalLines((currentLines) => [
             ...currentLines,
-            ...step.output.map((text, outputIndex) => ({
+            ...step.output.map((output, outputIndex) => ({
               id: commandId + outputIndex + 1,
               kind: "output" as const,
-              text,
+              ...output,
             })),
           ]);
         }
@@ -128,21 +137,36 @@ export default function About() {
   }, []);
 
   return (
-    <main className="text-left">
-      <div className="w-fit rounded-sm bg-[#232831] p-4 font-mono text-sm leading-5 text-[#d5d7dd]">
+    <main className="w-full max-w-4xl overflow-x-auto text-left">
+      <div className="rounded-sm bg-[#232831] p-4 font-mono text-sm leading-5 text-[#d5d7dd]">
         {terminalLines.map((line) => {
           if (line.kind === "output") {
-            return <p key={line.id}>{line.text}</p>;
+            return (
+              <p key={line.id}>
+                {line.href ? (
+                  <a
+                    className="underline underline-offset-2 hover:text-[#3794ff]"
+                    href={line.href}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {line.text}
+                  </a>
+                ) : (
+                  line.text
+                )}
+              </p>
+            );
+          } else {
+            return (
+              <p key={line.id}>
+                <TerminalPrompt /> {line.command}
+                {activeCommandId === line.id ? (
+                  <span className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 bg-[#ffffff]" />
+                ) : null}
+              </p>
+            );
           }
-
-          return (
-            <p key={line.id}>
-              <TerminalPrompt /> {line.command}
-              {activeCommandId === line.id ? (
-                <span className="ml-0.5 inline-block h-4 w-2 translate-y-0.5 animate-pulse bg-[#d5d7dd]" />
-              ) : null}
-            </p>
-          );
         })}
       </div>
 
